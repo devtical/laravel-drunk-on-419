@@ -1,4 +1,3 @@
 # Changelog
 
-All notable changes to `:package_name` will be documented in this file.
-
+All notable changes to `laravel-drunk-on-419` will be documented in this file.
