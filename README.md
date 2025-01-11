@@ -1,7 +1,7 @@
 # Drunk on 419
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/devtical/laravel-drunk-on-419.svg?style=flat-square)](https://packagist.org/packages/devtical/laravel-drunk-on-419)
-[![Tests](https://img.shields.io/github/actions/workflow/status/devtical/laravel-drunk-on-419/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/devtical/laravel-drunk-on-419/actions/workflows/run-tests.yml)
+[![Tests](https://img.shields.io/github/actions/workflow/status/devtical/laravel-drunk-on-419/run-tests.yml?label=tests&style=flat-square)](https://github.com/devtical/laravel-drunk-on-419/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/devtical/laravel-drunk-on-419.svg?style=flat-square)](https://packagist.org/packages/devtical/laravel-drunk-on-419)
 
 ![Cover](art/cover.png)
