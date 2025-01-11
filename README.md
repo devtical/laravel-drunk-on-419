@@ -1,65 +1,53 @@
-# :package_description
+# Drunk on 419
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![Tests](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions/workflows/run-tests.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-<!--delete-->
----
-This package can be used as to scaffold a framework agnostic package. Follow these steps to get started:
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/devtical/laravel-drunk-on-419.svg?style=flat-square)](https://packagist.org/packages/devtical/laravel-drunk-on-419)
+[![Tests](https://img.shields.io/github/actions/workflow/status/devtical/laravel-drunk-on-419/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/devtical/laravel-drunk-on-419/actions/workflows/run-tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/devtical/laravel-drunk-on-419.svg?style=flat-square)](https://packagist.org/packages/devtical/laravel-drunk-on-419)
 
-1. Press the "Use template" button at the top of this repo to create a new repo with the contents of this skeleton
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files
-3. Have fun creating your package.
-4. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-<!--/delete-->
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+![Cover](art/cover.png)
 
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/:package_name.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/:package_name)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+Handles 419 errors gracefully by redirecting users when CSRF tokens expire.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
+composer require devtical/laravel-drunk-on-419
 ```
 
 ## Usage
 
+#### Automatic Middleware Registration
+
+Once installed, the package automatically registers the middleware in the web group to handle CSRF token expiry errors. This means it will handle all requests in the `web` middleware group without requiring manual registration.
+
+#### Flashing Session Data
+
+When a CSRF token expires and a 419 error occurs, the middleware redirects the user to the previous page (if available) or a fallback URL, with an error message flashed to the session. You can display the error message in your views using the following:
+
 ```php
-$skeleton = new VendorName\Skeleton();
-echo $skeleton->echoPhrase('Hello, VendorName!');
+@session('expired')
+    {{ $value }}
+@endsession
 ```
 
-## Testing
+#### Publishing Language Files
+
+You can publish the language files to customize the error message:
 
 ```bash
-composer test
+php artisan vendor:publish --tag=drunkon419-translations
 ```
 
-## Changelog
+This will create a language file in your application at `lang/vendor/drunkon419/session.php`. You can modify the `expired` key to suit your needs:
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+```php
+return [
+    'expired' => 'Your session has expired. Please try again.',
+];
+```
 
-## Contributing
-
-Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
-## Credits
-
-- [:author_name](https://github.com/:author_username)
-- [All Contributors](../../contributors)
 
 ## License
 
