@@ -16,7 +16,7 @@ class HandleDrunkOn419
     {
         $response = $next($request);
 
-        if ($response->status() === 419) {
+        if ($response->getStatusCode() === 419) {
             if ($request->expectsJson()) {
                 return new JsonResponse(['message' => trans('drunkon419::session.expired')], 419);
             }
